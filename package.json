@@ -1,14 +1,15 @@
 {
   "name": "svelte-app_ts",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "docker": "npm run build && docker compose up -d"
+    "docker": "npm run build && docker compose up -d",
+    "dist": "npm run build && mkdir -p tmp/$npm_package_name && rm -Rf tmp/$npm_package_name/* && cp -R dist/* tmp/$npm_package_name && tar czf $npm_package_name-$npm_package_version.tgz -C tmp $npm_package_name"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.30",
